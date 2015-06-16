@@ -14,8 +14,10 @@ Future plans / hopes:
 * PHP template the whole website
 * Turn the site into a 1 page angular app.
 * Do it all with the Kids
+* Update safe guarding policy links in footer
+* fix sidebar panel in mobile view (registration, partner, volunteer, membership)
 
-If you want to contribute feel free to submit pull requests and I can upload asap.
+If you want to contribute feel free to complete any of the tasks above, or add your own, submit pull requests and I can upload asap.
 
 Warmest Regards,
 Lindsay
