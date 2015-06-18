@@ -16,6 +16,7 @@ Future plans / hopes:
 * Do it all with the Kids
 * Update safe guarding policy links in footer
 * fix sidebar panel in mobile view (registration, partner, volunteer, membership)
+* 301 redirect for old site urls that are now defunct
 
 If you want to contribute feel free to complete any of the tasks above, or add your own, submit pull requests and I can upload asap.
 
