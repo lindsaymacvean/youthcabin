@@ -196,12 +196,11 @@
 			<div class="widget">
 				<h4>Get email updates</h4>
                 <div id="mail-subscribe-div">
-                    <form class="form-horizontal"
-                          onSubmit="return do_mail_subscribe ();">
+                    <form class="form-horizontal" method="post" action="mail-chimp.php">
                         <fieldset>
                             <p>Sign up for email updates.</p>
                             <div class="input-prepend input-append">
-                                <input class="span2" id="mail-subscribe-email" type="text" placeholder="Email">
+                                <input class="span2" id="mail-subscribe-email" type="text" name="email" placeholder="Email">
                                 <button class="btn btn-inverse" type="submit">Subscribe!</button>
                             </div>
                             <p id="mail-subscribe-error" style="color: red;">
@@ -259,38 +258,6 @@
 <script src="assets/js/hover/setting.js"></script>
 <script src="assets/js/custom.js"></script>
 <script>
-
-function do_mail_subscribe ()
-{
-    $.post ("mail-chimp.php",
-            {email: $("#mail-subscribe-email").val ()},
-            function (result)
-            {
-              data = JSON.parse (result);
-
-              if (data)
-              {
-                $("#mail-subscribe-div")
-                     .html ("Thanks, you have been added to our mailing list!"
-                               + "<br><br><br>");
-              }
-
-              else
-              {
-                $("#mail-subscribe-error")
-                     .text ("Sorry, there is something wrong with that e-mail "
-                               + "address, please try again.");
-              }
-
-              return false;
-            });
-
-   return false;
-}
-   
-
-
-
 (function(){
 // Append a close trigger for each block
 $('.box-tile .content').append('<span class="close">x</span>');
