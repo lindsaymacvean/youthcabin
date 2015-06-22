@@ -1,7 +1,6 @@
 <?php
 
-$api_key = '';
-$list_id = '';
+include 'credentials.php';
 
 
 list (, $datacentre) = explode ('-', $api_key);
