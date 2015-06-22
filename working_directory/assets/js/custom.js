@@ -66,6 +66,9 @@ jQuery(document).ready(function($) {
 
        // Serialize the form data.
       var formData = $(form).serialize();
+
+      //Reset the error box
+      $("#mail-subscribe-error").addClass('hidden')
       
       //Ajax reques
       $.ajax({
@@ -76,15 +79,21 @@ jQuery(document).ready(function($) {
       .done(function (result) {
           var data = JSON.parse(result);
           console.log(data);
-          $("#mail-subscribe-div")
-                 .html ("Thanks, you have been added to our mailing list!"
-                           + "<br><br><br>");
+          if (data===false) {
+            $("#mail-subscribe-error").removeClass('hidden')
+                   .text ("Sorry, there is something wrong with that e-mail "
+                             + "address, please try again.");
+          } else {
+            $("#mail-subscribe-div")
+                   .html ("Thanks, you have been added to our mailing list!"
+                             + "<br><br><br>");
+          }
           return false;
         })
       .fail(function(result){
           var data = JSON.parse(result);
           console.log(data);
-          $("#mail-subscribe-error")
+          $("#mail-subscribe-error").removeClass('hidden')
                    .text ("Sorry, there is something wrong with that e-mail "
                              + "address, please try again.");
       });
@@ -95,7 +104,9 @@ jQuery(document).ready(function($) {
 
   });
    
+  
 
+  //Contact Form Script
   $(function() {
 
     // Get the form.
