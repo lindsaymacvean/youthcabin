@@ -111,20 +111,20 @@
 						<div class="tagline_text">
 							<h1>The <span class="text-success">Cabin</span> Local Youth Club</h1>
 							<p>
-								The Knaphill Cabin operates in the style of an informal drop in youth cafe every Monday from 7pm to 9pm at The Vyne, Knaphill's local community centre.
+								The Knaphill Cabin operates in the style of an informal drop in youth cafe every Monday from 7pm to 9pm at The Vyne, Knaphill&#8217;s local community centre.
 								 
 								Sessions are run by enthusiastic volunteers who work hard to engage young people in a variety of activities and events. We seek to encourage participation in positive leisure activities and to nurture responsible attitudes, valuing others and building good relations with all sections of the community.  
 							</p>
 
 							<p>
-								As well as offering a variety of games such pool, table football and air hockey,  cards and  boardgames, Wii and PS3, each week the Knaphill Cabin runs an activity.  These include arts and crafts, sports and field games, cooking, competitions and quizzes, first-aid sessions and self-defence classes.  Occasionally we have visiting presenters, which have included a dog handler, a reptile show, self-defence classes, dance sessions and art workshops. Homework help is also available. Details of upcoming sessions can be found <a href="whatson.html">here</a>. 
+								As well as offering a variety of games such as pool, table football and air hockey,  cards and  boardgames, Wii and PS3, each week the Knaphill Cabin runs an activity.  These include arts and crafts, sports and field games, cooking, competitions and quizzes, first-aid sessions and self-defence classes.  Occasionally we have visiting presenters, which have included a dog handler, a reptile show, self-defence classes, dance sessions and art workshops. Homework help is also available. Details of upcoming sessions can be found <a href="whatson.html">here</a>. 
 
 								There is also a small cafe offering a cheap hot meal with a shop selling sweets, snacks and drinks.
 							</p>
 							<p>
 								Everyone who comes to the Knaphill Cabin can expect to be treated with respect, but is also expected to show respect in return (details of our code of conduct can be found <a href="membership.html">here</a>).</p>
 
-								<p>If you are 11-17 and live around Knaphill we hope you'll come along and join us - it's free and everyone is welcome.   Details of how to find us can be found <a href="findus.html">here</a>. If you are 18+ and interesting in helping out as a volunteer, details can be found <a href="volunteer.html">here</a> (registered volunteers can access the volunteer area of the website <a href="Volunteers/index.html">here</a>).
+							<p>If you are 11-17 and live around Knaphill we hope you'll come along and join us - it&#8217;s free and everyone is welcome.   Details of how to find us can be found <a href="findus.html">here</a>. If you are 18+ and interesting in helping out as a volunteer, details can be found <a href="volunteer.html">here</a> (registered volunteers can access the volunteer area of the website <a href="Volunteers/index.html">here</a>).
 							</p>
 						</div>
 					</div>
@@ -195,17 +195,22 @@
 		<div class="span3">
 			<div class="widget">
 				<h4>Get email updates</h4>
-				<form class="form-horizontal" action="#" method="post">
-					<fieldset>
-						<p>
-							 Sign up for email updates.
-						</p>
-						<div class="input-prepend input-append">
-							<input class="span2" id="appendedPrependedInput" type="text" placeholder="Email">
-							<button class="btn btn-inverse" type="submit">Subscribe!</button>
-						</div>
-					</fieldset>
-				</form>
+                <div id="mail-subscribe-div">
+                    <form class="form-horizontal"
+                          onSubmit="return do_mail_subscribe ();">
+                        <fieldset>
+                            <p>Sign up for email updates.</p>
+                            <div class="input-prepend input-append">
+                                <input class="span2" id="mail-subscribe-email" type="text" placeholder="Email">
+                                <button class="btn btn-inverse" type="submit">Subscribe!</button>
+                            </div>
+                            <p id="mail-subscribe-error" style="color: red;">
+                            </p>
+                        </fieldset>
+                    </form>
+
+                </div>
+                
 				<ul class="social_small">
 					<li class="facebook first"><a href="https://www.facebook.com/KnaphillCabin" title="Facebook" target="_blank">Facebook</a></li>
 					<li class="twitt"><a href="https://twitter.com/KnaphillCabin" target="_blank" title="Twitter">Twitter</a></li>
@@ -254,6 +259,38 @@
 <script src="assets/js/hover/setting.js"></script>
 <script src="assets/js/custom.js"></script>
 <script>
+
+function do_mail_subscribe ()
+{
+    $.post ("mail-chimp.php",
+            {email: $("#mail-subscribe-email").val ()},
+            function (result)
+            {
+              data = JSON.parse (result);
+
+              if (data)
+              {
+                $("#mail-subscribe-div")
+                     .html ("Thanks, you have been added to our mailing list!"
+                               + "<br><br><br>");
+              }
+
+              else
+              {
+                $("#mail-subscribe-error")
+                     .text ("Sorry, there is something wrong with that e-mail "
+                               + "address, please try again.");
+              }
+
+              return false;
+            });
+
+   return false;
+}
+   
+
+
+
 (function(){
 // Append a close trigger for each block
 $('.box-tile .content').append('<span class="close">x</span>');
