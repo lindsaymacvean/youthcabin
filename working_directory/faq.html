@@ -444,17 +444,21 @@
 		<div class="span3">
 			<div class="widget">
 				<h4>Get email updates</h4>
-				<form class="form-horizontal" action="#" method="post">
-					<fieldset>
-						<p>
-							 Sign up for email updates and we'll plant a tree for you through Trees for the Future.
-						</p>
-						<div class="input-prepend input-append">
-							<input class="span2" id="appendedPrependedInput" type="text" placeholder="Email">
-							<button class="btn btn-inverse" type="submit">Subscribe!</button>
-						</div>
-					</fieldset>
-				</form>
+                <div id="mail-subscribe-div">
+                    <form class="form-horizontal" method="post" action="mail-chimp.php">
+                        <fieldset>
+                            <p>Sign up for email updates.</p>
+                            <div class="input-prepend input-append">
+                                <input class="span2" id="mail-subscribe-email" type="text" name="email" placeholder="Email">
+                                <button class="btn btn-inverse" type="submit">Subscribe!</button>
+                            </div>
+                            <p id="mail-subscribe-error" class="alert alert-error hidden">
+                            </p>
+                        </fieldset>
+                    </form>
+
+                </div>
+                
 				<ul class="social_small">
 					<li class="facebook first"><a href="#" title="Facebook">Facebook</a></li>
 					<li class="twitt"><a href="#" title="Twitter">Twitter</a></li>
