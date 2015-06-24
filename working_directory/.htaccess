@@ -1,0 +1,4 @@
+RewriteEngine On
+RedirectMatch 301 /safeguarding.html /membership.html#safeguarding
+RedirectMatch 301 /findus.html /contactus.html
+RedirectMatch 301 /help.html /safeguarding.html
